@@ -77,26 +77,21 @@ if 'recommendations' not in st.session_state:
     st.session_state.recommendations = []
 
 st.write("Enter a movie name to get similar recommendations!")
-# Add key parameter and on_change=None to disable automatic updates
-title = st.text_input("🎥 Enter a movie name:", key="movie_input", on_change=None).strip()
+title = st.text_input("🎥 Enter a movie name:").strip()
 
-# Create a form to prevent Enter key from triggering
-with st.form(key='movie_form'):
-    # Add a hidden text input to prevent form submission on Enter
-    st.text_input("", value="", key="hidden", label_visibility="collapsed")
-    submit = st.form_submit_button("🔍 Recommend")
-    if submit:
-        if not title:
-            st.warning("Please enter a movie title")
+# Recommendation Button
+if st.button("🔍 Recommend"):
+    if not title:
+        st.warning("Please enter a movie title")
+    else:
+        result = recommend(title)
+        
+        if "error" in result:
+            st.session_state.show_recommendations = False  # Clear previous recommendations
+            st.error(result["error"])
         else:
-            result = recommend(title)
-            
-            if "error" in result:
-                st.session_state.show_recommendations = False  # Clear previous recommendations
-                st.error(result["error"])
-            else:
-                st.session_state.show_recommendations = True
-                st.session_state.recommendations = result["recommendations"]
+            st.session_state.show_recommendations = True
+            st.session_state.recommendations = result["recommendations"]
 
 # Display recommendations if available
 if st.session_state.show_recommendations and st.session_state.recommendations:
