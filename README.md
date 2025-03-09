@@ -1,4 +1,4 @@
-# 🎬 Enhanced Movie Recommendation System
+# 🎬 Movie Recommendation System
 
 A content-based movie recommendation system that suggests similar movies based on various features like genres, keywords, cast, crew, and overview.
 
