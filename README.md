@@ -16,19 +16,61 @@ A content-based movie recommendation system that suggests similar movies based o
 2. **Enhanced Recommendation Function**: Returns movie titles with similarity scores
 3. **Simple UI**: Clean visualization of recommendations with similarity scores
 
-## 🛠️ Installation
+## 🛠️ Installation & Setup
 
+### Prerequisites
+1. **Python**: Make sure Python 3.8 or higher is installed
+2. **Git**: Install Git for version control
+3. **Dataset**: Download the TMDB 5000 Dataset files:
+   - `tmdb_5000_movies.csv`
+   - `tmdb_5000_credits.csv`
+
+### Step-by-Step Installation
+
+1. **Clone the Repository**
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd movie-recommendation-system
+git clone https://github.com/kaushik-ch163/movie-recommender.git
+cd movie-recommender
+```
 
-# Install dependencies
+2. **Create & Activate Virtual Environment**
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/MacOS
+python3 -m venv venv
+source venv/bin/activate
+```
+
+3. **Install Dependencies**
+```bash
 pip install -r requirements.txt
+```
 
-# Run the application
+4. **Setup Dataset**
+- Place the downloaded dataset files in the project root directory:
+  - `tmdb_5000_movies.csv`
+  - `tmdb_5000_credits.csv`
+- Run the Jupyter notebook to generate required files:
+```bash
+jupyter notebook Project.ipynb
+```
+- Execute all cells to generate:
+  - `movies.pkl`
+  - `similarity.pkl`
+
+5. **Run the Application**
+```bash
 streamlit run app.py
 ```
+The application will open in your default web browser at `http://localhost:8501`
+
+### Troubleshooting
+- If you see "Movie not found" errors, ensure the dataset files are properly processed
+- For "Module not found" errors, verify all dependencies are installed
+- Check if pickle files are generated in the project directory
 
 ## 📊 How It Works
 
