@@ -109,4 +109,3 @@ if st.session_state.show_recommendations and st.session_state.recommendations:
             st.write(f"Similarity Score: {movie['similarity']:.2f}")
         
         st.divider()
-        
